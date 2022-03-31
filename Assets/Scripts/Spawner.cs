@@ -23,6 +23,8 @@ public class Spawner : MonoBehaviour
 
     //Cantidad de players
     int playerCount;
+    int selectedNames;
+    
     
     
    
@@ -70,10 +72,12 @@ public class Spawner : MonoBehaviour
             GameObject playerSpawned = Instantiate(player, new Vector3(xPosition, 1, zPosition), Quaternion.identity);
             int selectedColors = Random.Range(0, colors.Count);
             Debug.Log(colors.Count);
-            texto.text = names[Random.Range(0, names.Count)];//.ToString();
+            texto.text = names[Random.Range(0, names.Count)].ToString();
             //int selectedNames = Random.Range(0, names.Count);
+            //int.TryParse(texto.text, out selectedNames);
             playerSpawned.GetComponent<MeshRenderer>().material.color = colors[selectedColors];
             colors.RemoveAt(selectedColors);
+            //names.RemoveAt(selectedNames);
             yield return new WaitForSeconds(5);
             playerCount += 1;   
             
